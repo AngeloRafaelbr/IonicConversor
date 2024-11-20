@@ -1,0 +1,7 @@
+{
+  "name": "IonicConversor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
