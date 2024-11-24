@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conversor de Moedas</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Selecione as Moedas</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="select-container">
+
+        <div class="inputCoin">
+
+          <ion-label stacked>Moeda de Origem</ion-label> <!-- 'stacked' coloca o label em cima -->
+          <ion-select label="Selecione a primeira moeda" label-placement="floating" fill="outline" interface="action-sheet" [(ngModel)]="sourceCurrency">
+            <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency }}
+            </ion-select-option>
+          </ion-select>
+        
+
+        
+          <ion-label>Moeda de Destino</ion-label>
+          <ion-select label="Selecione a segunda moeda" label-placement="floating" fill="outline" interface="action-sheet" [(ngModel)]="targetCurrency">
+            <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency }}
+            </ion-select-option>
+          </ion-select>
+
+          
+        
+          
+      </div>
+
+      <div>
+        <ion-button class="buttonToggle" color="warning" (click)="toggleCurrencies()">
+          <ion-icon name="swap-vertical" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+
+    </div>
+
+    <div class="inputValueContainer">
+      <ion-label>Valor: </ion-label>
+      <ion-item>
+        <ion-input type="number" [(ngModel)]="amount"></ion-input>
+      </ion-item>
+    </div>  
+
+       <!-- Botão para alternar as moedas -->
+    <div>
+      <ion-button class="buttonConverterContainer" (click)="convertCurrency()">Converter</ion-button>
+    </div>
+       
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card *ngIf="conversionResult">
+    <ion-card-header>
+      <ion-card-title>Resultado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      O valor de {{ lastConvertedAmount }} {{ sourceCurrency }} equivale a {{ conversionResult }} {{ targetCurrency }} .
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

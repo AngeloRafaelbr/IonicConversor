@@ -1,0 +1,49 @@
+.select-container {
+  display: flex; /* Ativa o layout flexível para os filhos */
+  align-items: center; /* Alinha os itens no topo */
+  gap: 15px; /* Espaço entre selects e botão */
+  
+}
+
+.inputCoin {
+  flex-grow: 1; /* Faz os selects ocuparem o espaço restante */
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Empilha os elementos (label e select) */
+  gap: 10px; /* Espaço entre os labels e selects */
+
+  ion-select::part(text) {
+    color: #4bd64b;
+    } 
+  ion-select::part(icon) {
+    color: #2f7cbb;
+    opacity: 1;
+    }
+}
+
+.buttonToggle {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputValueContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:1rem;
+}
+
+.buttonConverterContainer{
+  display: flex;
+  align-items: center;
+  margin:2rem;
+}
+
+.buttonConverter{
+    padding: 1rem;
+    width: 10rem;
+}
+
