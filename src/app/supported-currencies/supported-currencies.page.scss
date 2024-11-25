@@ -1,0 +1,19 @@
+ion-content {
+    margin: 12rem;
+
+    border-radius: 25%;
+}
+
+ion-grid {
+    overflow-x: auto;
+    text-align: center;
+    margin: 10px;
+}
+
+ion-row {
+    border-bottom: 1px solid #ccc;
+}
+
+ion-col {
+    padding: 8px 16px;
+}

@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'converter',
     loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule)
   },
+  {
+    path: 'supported-currencies',
+    loadChildren: () => import('./supported-currencies/supported-currencies.module').then( m => m.SupportedCurrenciesPageModule)
+  },
 ];
 
 @NgModule({
