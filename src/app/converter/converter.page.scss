@@ -1,3 +1,31 @@
+/* Estilo para os botões na navbar */
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0.5rem;
+  text-transform: capitalize; /* Deixa as palavras com inicial maiúscula */
+}
+
+.double-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.double-line span {
+  display: block;
+  text-align: center;
+  white-space: nowrap; /* Mantém cada linha na própria linha para não ficar muito largo */
+}
+
+.logo {
+  height: 40px; /* Ajuste conforme necessário */
+  width: auto;
+}
+
 .select-container {
   display: flex; /* Ativa o layout flexível para os filhos */
   align-items: center; /* Alinha os itens no topo */
@@ -46,4 +74,3 @@
     padding: 1rem;
     width: 10rem;
 }
-

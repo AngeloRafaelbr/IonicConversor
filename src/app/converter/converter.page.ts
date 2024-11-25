@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-converter',
@@ -16,7 +17,7 @@ export class ConverterPage {
   conversionResult: number | null = null;
   currencies: string[] = ['USD', 'EUR', 'BRL', 'GBP', 'JPY'];
 
-  constructor(private http: HttpClient, private alertController: AlertController) {}
+  constructor(private http: HttpClient, private alertController: AlertController, private router: Router) {}
 
   async convertCurrency() {
 
@@ -34,7 +35,7 @@ export class ConverterPage {
     this.lastConvertedAmount = this.amount;
 
     const apiKey = '6910d38e304136eeddab5b49';
-    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${this.sourceCurrency}/${this.targetCurrency}/${this.amount}`;
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${this.sourceCurrency}/${this.targetCurrency}/${this.amount}`
     this.http.get(url).subscribe(
       (data: any) => {
       this.conversionResult = data.conversion_result;
@@ -49,5 +50,13 @@ export class ConverterPage {
     this.targetCurrency = temp;
 
     this.convertCurrency();
+  }
+
+  navigateToConverter() {
+    this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
+  }
+
+  navigateToChart() {
+    this.router.navigate(['/home']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
   }
 }
