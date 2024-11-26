@@ -32,7 +32,7 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-title>Selecione a Moeda<br>a ser comparada</ion-card-title>
+      <ion-card-title>Selecione uma Moeda<br> a ser comparada</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -49,7 +49,7 @@
         <div class="inputCoin">
 
           <ion-label stacked>Moeda</ion-label> <!-- 'stacked' coloca o label em cima -->
-          <ion-select label="Selecione a primeira moeda" label-placement="floating" fill="outline" interface="action-sheet">
+          <ion-select label="Selecione uma moeda" label-placement="floating" fill="outline" interface="action-sheet">
             <ion-select-option *ngFor="let currency of currencies" [value]="currency">
               {{ currency }}
             </ion-select-option>
@@ -60,7 +60,7 @@
       </div>
 
         <div>
-          <ion-button class="buttonConverterContainer">Converter</ion-button>
+          <ion-button class="buttonConverterContainer" (click)="onConvertClick()">Converter</ion-button>
         </div>
        
 
@@ -73,7 +73,9 @@
       <ion-card-title>Gráfico Gerado</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      chart
+      <div style="position: relative; height: 300px; width: 100%;">
+        <canvas id="conversionChart"></canvas>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -23,6 +23,32 @@
   /* Mantém cada linha na própria linha para não ficar muito largo */
 }
 
+.inputCoin {
+  flex-grow: 1; /* Faz os selects ocuparem o espaço restante */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Empilha os elementos (label e select) */
+  gap: 10px; /* Espaço entre os labels e selects */
+
+  ion-select::part(text) {
+    color: #4bd64b;
+    } 
+  ion-select::part(icon) {
+    color: #2f7cbb;
+    opacity: 1;
+    }
+}
+
+ion-card {
+  margin: 10px;
+}
+
+#conversionChart {
+  height: 300px !important;
+  width: 100% !important;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
 
