@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'converter',
     loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule)
+  },  {
+    path: 'multiple-conversion',
+    loadChildren: () => import('./multiple-conversion/multiple-conversion.module').then( m => m.MultipleConversionPageModule)
   },
+
 ];
 
 @NgModule({

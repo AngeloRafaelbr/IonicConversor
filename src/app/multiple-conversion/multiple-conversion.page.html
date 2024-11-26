@@ -1,0 +1,75 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <!-- Botão com o logotipo à esquerda -->
+    <ion-buttons slot="start">
+      <img src="assets/logo.png" alt="Organiza" class="logo">
+    </ion-buttons>
+
+    <!-- Dois textos pressionáveis com redirecionamento -->
+    <ion-buttons slot="end">
+
+      <ion-button (click)="navigateToConverter()">
+        <div class="nav-link">Conversor<br>Direto</div>
+      </ion-button>
+
+      <ion-button (click)="navigateToChart()">
+        <div class="nav-link">Conversor<br>Múltiplo</div>
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Selecione a Moeda<br>a ser comparada</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="select-container">
+
+        <div class="inputValueContainer">
+          <ion-label>Valor: </ion-label>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="amount"></ion-input>
+          </ion-item>
+        </div>  
+
+        <div class="inputCoin">
+
+          <ion-label stacked>Moeda</ion-label> <!-- 'stacked' coloca o label em cima -->
+          <ion-select label="Selecione a primeira moeda" label-placement="floating" fill="outline" interface="action-sheet">
+            <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency }}
+            </ion-select-option>
+          </ion-select>
+          
+        </div>
+
+      </div>
+
+        <div>
+          <ion-button class="buttonConverterContainer">Converter</ion-button>
+        </div>
+       
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Gráfico Gerado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      chart
+    </ion-card-content>
+  </ion-card>
+</ion-content>

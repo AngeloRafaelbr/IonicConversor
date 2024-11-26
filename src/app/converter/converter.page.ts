@@ -57,6 +57,6 @@ export class ConverterPage {
   }
 
   navigateToChart() {
-    this.router.navigate(['/home']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
+    this.router.navigate(['/multiple-conversion']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
   }
 }
