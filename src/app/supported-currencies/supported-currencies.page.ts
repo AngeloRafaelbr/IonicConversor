@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class SupportedCurrenciesPage {
+  searchText: string = '';
   conversions = [
     { code: 'AED', name: 'UAE Dirham', country: 'United Arab Emirates' },
     { code: 'AFN', name: 'Afghan Afghani', country: 'Afghanistan' },
@@ -170,4 +171,18 @@ export class SupportedCurrenciesPage {
     { code: 'ZMW', name: 'Zambian Kwacha', country: 'Zambia' },
     { code: 'ZWL', name: 'Zimbabwean Dollar', country: 'Zimbabwe' },
   ];
+
+  filteredConversions = [...this.conversions];  // Copiar os dados inicialmente
+
+  filterData() {
+    if (this.searchText.trim() === '') {
+      this.filteredConversions = [...this.conversions]; // Se não houver texto, mostrar todos os dados
+    } else {
+      this.filteredConversions = this.conversions.filter(conversion => 
+        conversion.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        conversion.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        conversion.country.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
+  }
 }
