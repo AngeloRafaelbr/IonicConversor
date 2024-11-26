@@ -1,8 +1,27 @@
 <ion-header>
+
   <ion-toolbar>
-    <ion-title>Conversor de Moedas</ion-title>
-    
+
+    <!-- Botão com o logotipo à esquerda -->
+    <ion-buttons slot="start">
+      <img src="assets/logo.png" alt="Organiza" class="logo">
+    </ion-buttons>
+
+    <!-- Dois textos pressionáveis com redirecionamento -->
+    <ion-buttons slot="end">
+
+      <ion-button (click)="navigateToConverter()">
+        <div class="nav-link">Conversor<br>Direto</div>
+      </ion-button>
+
+      <ion-button (click)="navigateToChart()">
+        <div class="nav-link">Conversor<br>Múltiplo</div>
+      </ion-button>
+
+    </ion-buttons>
+
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>

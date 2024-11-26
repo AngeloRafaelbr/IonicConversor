@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule)
   },
   {
+    path: 'multiple-conversion',
+    loadChildren: () => import('./multiple-conversion/multiple-conversion.module').then( m => m.MultipleConversionPageModule)
+  },
+
+  {
     path: 'supported-currencies',
     loadChildren: () => import('./supported-currencies/supported-currencies.module').then( m => m.SupportedCurrenciesPageModule)
   },
