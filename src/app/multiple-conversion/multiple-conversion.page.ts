@@ -13,7 +13,6 @@ export class MultipleConversionPage{
   amount: number = 1;
   currencies: string[] = ['USD', 'EUR', 'BRL', 'GBP', 'JPY'];
 
-
   navigateToConverter() {
     this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
   }

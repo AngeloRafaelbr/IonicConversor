@@ -1,12 +1,13 @@
-.navbar-item {
+/* Estilo para o logotipo */
+.logo {
+  height: 4rem;
+  width: auto;
+}
+
+/* Botões da navbar */
+.nav-link {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 0.5rem;
-  text-transform: capitalize;
-  /* Deixa as palavras com inicial maiúscula */
+  gap: 0.4rem;
 }
 
 .double-line {
@@ -22,8 +23,15 @@
   /* Mantém cada linha na própria linha para não ficar muito largo */
 }
 
-.logo {
-  height: 40px;
-  /* Ajuste conforme necessário */
-  width: auto;
+/* Responsividade */
+@media (max-width: 768px) {
+
+  .nav-link {
+    font-size: 0.65rem;
+  }
+
+  .logo {
+    height: 2rem;
+    width: auto;
+  }
 }

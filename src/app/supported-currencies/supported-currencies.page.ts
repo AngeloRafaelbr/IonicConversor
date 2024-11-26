@@ -188,7 +188,6 @@ export class SupportedCurrenciesPage {
     }
   }
 
-
   navigateToConverter() {
     this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
   }
