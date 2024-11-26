@@ -22,4 +22,8 @@ export class MultipleConversionPage{
     this.router.navigate(['/multiple-conversion']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
   }
 
+  navigateToSupport() {
+    this.router.navigate(['/supported-currencies']); // Redireciona para a página de conversões suportadas
+  }
+
 }

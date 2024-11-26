@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-converter',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 
 export class SupportedCurrenciesPage {
   searchText: string = '';
+  constructor(private router: Router) { }
   conversions = [
     { code: 'AED', name: 'UAE Dirham', country: 'United Arab Emirates' },
     { code: 'AFN', name: 'Afghan Afghani', country: 'Afghanistan' },
@@ -184,5 +186,18 @@ export class SupportedCurrenciesPage {
         conversion.country.toLowerCase().includes(this.searchText.toLowerCase())
       );
     }
+  }
+
+
+  navigateToConverter() {
+    this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
+  }
+
+  navigateToChart() {
+    this.router.navigate(['/multiple-conversion']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
+  }
+
+  navigateToSupport() {
+    this.router.navigate(['/supported-currencies']); // Redireciona para a página de conversões suportadas
   }
 }

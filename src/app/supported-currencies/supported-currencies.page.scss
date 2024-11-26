@@ -1,14 +1,33 @@
+.navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0.5rem;
+    text-transform: capitalize;
+    /* Deixa as palavras com inicial maiúscula */
+}
+
+.logo {
+    height: 40px;
+    /* Ajuste conforme necessário */
+    width: auto;
+}
+
 
 .currency-grid {
     margin: 1rem 0.5rem;
 }
 
 .header-row {
-    background-color: #0056b3; /* Cor de fundo mais sóbria e profissional */
+    background-color: #0056b3;
+    /* Cor de fundo mais sóbria e profissional */
     color: #ffffff;
     text-align: center;
     padding: 12px 0;
-    border-radius: 5px; /* Bordas mais retas */
+    border-radius: 5px;
+    /* Bordas mais retas */
 }
 
 .column-header {
@@ -19,27 +38,14 @@
 .column-content {
     text-align: center;
     padding: 12px 8px;
-    border: 1px solid #ccc; /* Borda mais sutil */
+    border: 1px solid #ccc;
+    /* Borda mais sutil */
     transition: background-color 0.3s ease, transform 0.2s ease;
-    color: rgb(63, 63, 63);
-}
-
-/* Efeito de hover para as células */
-.column-content:hover {
-    background-color: #d1d1d1; /* Cor de fundo ligeiramente mais escura */
-    transform: translateY(-2px); /* Levanta um pouco a célula */
-}
-
-.data-row:nth-child(odd) .column-content {
-    background-color: #f4f4f4; /* Fundo alternado para uma linha mais suave */
-}
-
-.data-row:nth-child(even) .column-content {
-    background-color: #e0e0e0; /* Segunda linha com tom diferente */
 }
 
 ion-row {
-    margin-bottom: 10px; /* Espaçamento entre as linhas */
+    margin-bottom: 10px;
+    /* Espaçamento entre as linhas */
 }
 
 .header-title {
@@ -54,8 +60,10 @@ ion-col {
 
 ion-searchbar {
     margin-bottom: 20px;
-    border-radius: 5px;  /* Bordas levemente arredondadas */
-    padding-start: 10px; /* Mais espaçamento no início */
+    border-radius: 5px;
+    /* Bordas levemente arredondadas */
+    padding: 10px;
+    /* Mais espaçamento no início */
 }
 
 .column-header {
@@ -66,18 +74,24 @@ ion-searchbar {
 .column-content {
     text-align: center;
     padding: 12px 8px;
-    border: 1px solid #ccc; /* Borda suave */
+    border: 1px solid #ccc;
+    /* Borda suave */
 }
 
 
 /* Responsividade */
 @media (max-width: 600px) {
-    .column-header, .column-content {
-        font-size: 0.9rem; /* Menor para dispositivos móveis */
-        padding: 8px 4px; /* Menos padding */
+
+    .column-header,
+    .column-content {
+        font-size: 0.9rem;
+        /* Menor para dispositivos móveis */
+        padding: 8px 4px;
+        /* Menos padding */
     }
 
     .header-title {
-        font-size: 1.3rem; /* Tamanho do título reduzido */
+        font-size: 1.3rem;
+        /* Tamanho do título reduzido */
     }
 }
