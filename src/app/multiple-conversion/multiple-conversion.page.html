@@ -56,7 +56,7 @@
       </div>
 
         <div>
-          <ion-button class="buttonConverterContainer">Converter</ion-button>
+          <ion-button class="buttonConverterContainer" (click)="onConvertClick()">Converter</ion-button>
         </div>
        
 
@@ -69,7 +69,9 @@
       <ion-card-title>Gráfico Gerado</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      chart
+      <div style="position: relative; height: 300px; width: 100%;">
+        <canvas id="conversionChart"></canvas>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
