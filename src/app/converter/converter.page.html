@@ -97,4 +97,21 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card *ngIf="conversionHistory.length > 0">
+    <ion-card-header>
+      <ion-card-title>Histórico de Conversões</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let history of conversionHistory">
+          <ion-label>
+           {{ history.date }} - {{ history.amount }} {{ history.sourceCurrency }} = {{ history.result }} {{ history.targetCurrency }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
 </ion-content>

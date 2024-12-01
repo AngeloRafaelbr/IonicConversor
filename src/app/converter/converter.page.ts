@@ -10,6 +10,17 @@ import { Router } from '@angular/router';
 })
 
 export class ConverterPage {
+
+  //variaveis para o historio
+
+  conversionHistory: { 
+    sourceCurrency: string, 
+    targetCurrency: string, 
+    amount: number, 
+    result: number, 
+    date: string }[] = [];
+
+  //variáveis para conversão direta:
   sourceCurrency: string = 'USD';
   targetCurrency: string = 'EUR';
   amount: number = 1;
@@ -57,7 +68,18 @@ export class ConverterPage {
     this.http.get(url).subscribe(
       (data: any) => {
       this.conversionResult = data.conversion_result;
-      }, error => {
+
+      if (this.conversionResult !== null) {
+        const conversionDate = new Date().toLocaleString();  // Obtém a data e hora atual
+        this.conversionHistory.unshift({
+          sourceCurrency: this.sourceCurrency,
+          targetCurrency: this.targetCurrency,
+          amount: this.amount,
+          result: this.conversionResult, 
+          date: conversionDate
+        });
+      }
+    }, error => {
       console.error('Erro ao acessar a API:', error);
     });
   }
