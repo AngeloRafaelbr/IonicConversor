@@ -54,7 +54,7 @@
           <ion-label>Moeda de Destino</ion-label>
           <ion-select label="Selecione a segunda moeda" label-placement="floating" fill="outline" interface="action-sheet" [(ngModel)]="targetCurrency">
             <ion-select-option *ngFor="let currency of currencies" [value]="currency">
-              {{ currency }} (offline)
+              {{ currency }}
             </ion-select-option>
           </ion-select>
 
@@ -82,7 +82,10 @@
     <div>
       <ion-button class="buttonConverterContainer" (click)="convertCurrency()">Converter</ion-button>
     </div>
-       
+    <div>
+      <ion-button (click)="navigateTohistory()" class="buttonHistoryContainer">
+        <div class="nav-link">Acessar Histórico</div> </ion-button>
+    </div>
 
     </ion-card-content>
 
@@ -97,9 +100,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button (click)="navigateTohistory()">
-    <div class="nav-link">Acessar Histórico</div>
-  </ion-button>
+ 
 
 
   

@@ -1,38 +1,3 @@
-<ion-header>
-
-  <ion-toolbar>
-
-    <!-- Botão com o logotipo à esquerda -->
-    <ion-buttons slot="start">
-      <img src="assets/logoMobile.png" alt="Organiza" class="logo">
-    </ion-buttons>
-
-    <!-- Dois textos pressionáveis com redirecionamento -->
-    <ion-buttons slot="end">
-
-      <ion-button (click)="navigateToSupport()">
-        <div class="nav-link">Conversões<br>Suportadas</div>
-      </ion-button>
-
-      <ion-button (click)="navigateToConverter()">
-        <div class="nav-link">Conversor<br>Direto</div>
-      </ion-button>
-
-      <ion-button (click)="navigateToChart()">
-        <div class="nav-link">Conversor<br>Múltiplo</div>
-      </ion-button>
-
-    </ion-buttons>
-
-  </ion-toolbar>
-  
-</ion-header>
-
-<ion-card *ngIf="conversionHistory.length === 0">
-  <ion-card-content>
-    Nenhum histórico de conversão disponível.
-  </ion-card-content>
-</ion-card>
 
 <ion-card>
     <ion-card-header>
@@ -51,5 +16,11 @@
         </ion-item>
         
       </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="conversionHistory.length === 0">
+    <ion-card-content>
+      Nenhum histórico de conversão disponível.
     </ion-card-content>
   </ion-card>
