@@ -1,0 +1,22 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .login-container {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  
+    ion-item {
+      margin-bottom: 15px;
+    }
+  }
+  
