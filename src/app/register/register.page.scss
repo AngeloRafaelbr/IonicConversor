@@ -33,18 +33,15 @@ ion-content {
   
   .form-field {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
-  .form-field ion-input {
+  .form-field input {
     width: 100%;
-    padding: 1rem;
-    font-size: 16px;
-    border: 2px solid #ddd;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f7f7f7;
-    box-sizing: border-box;
-    transition: all 0.3s ease;  // Transição suave para foco e borda
+    font-size: 16px;
   }
   
   .form-field ion-input:focus-within {
