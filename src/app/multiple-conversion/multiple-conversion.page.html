@@ -2,12 +2,12 @@
 
   <ion-toolbar>
 
-    <!-- Botão com o logotipo à esquerda -->
+
     <ion-buttons slot="start">
       <img src="assets/logoMobile.png" alt="Organiza" class="logo">
     </ion-buttons>
 
-    <!-- Dois textos pressionáveis com redirecionamento -->
+    
     <ion-buttons slot="end">
 
       <ion-button (click)="navigateToSupport()">
@@ -20,6 +20,10 @@
 
       <ion-button (click)="navigateToChart()">
         <div class="nav-link">Conversor<br>Múltiplo</div>
+      </ion-button>
+
+      <ion-button (click)="logout()">
+        <div class="nav-link">Logout</div>
       </ion-button>
 
     </ion-buttons>
@@ -48,8 +52,8 @@
 
         <div class="inputCoin">
 
-          <ion-label stacked>Moeda</ion-label> <!-- 'stacked' coloca o label em cima -->
-          <ion-select label="Selecione uma moeda" label-placement="floating" fill="outline" interface="action-sheet">
+          <ion-label stacked>Moeda</ion-label>
+          <ion-select label="Selecione uma moeda" label-placement="floating" fill="outline" interface="action-sheet" [(ngModel)]="selectedCurrency">
             <ion-select-option *ngFor="let currency of currencies" [value]="currency">
               {{ currency }}
             </ion-select-option>
@@ -73,7 +77,7 @@
       <ion-card-title>Gráfico Gerado</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <div style="position: relative; height: 300px; width: 100%;">
+      <div>
         <canvas id="conversionChart"></canvas>
       </div>
     </ion-card-content>

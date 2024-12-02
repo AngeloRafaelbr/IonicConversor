@@ -22,6 +22,10 @@
         <div class="nav-link">Conversor<br>Múltiplo</div>
       </ion-button>
 
+      <ion-button (click)="logout()">
+        <div class="nav-link">Logout</div>
+      </ion-button>
+
     </ion-buttons>
 
   </ion-toolbar>
@@ -31,19 +35,19 @@
 <ion-content>
   
   <ion-searchbar [(ngModel)]="searchText" [debounce]="500" (ionInput)="filterData()"
-                 showClearButton="focus" placeholder="Pesquisar currencies...">
+                 showClearButton="focus" placeholder="Pesquisar Moedas...">
   </ion-searchbar>
 
   <ion-grid class="currency-grid">
     <ion-row class="header-row">
       <ion-col size="4" size-sm="3" size-md="2" class="column-header">
-        <strong>Currency Code</strong>
+        <strong>Abreviatura</strong>
       </ion-col>
       <ion-col size="4" size-sm="4" size-md="5" class="column-header">
-        <strong>Currency Name</strong>
+        <strong>Moeda</strong>
       </ion-col>
       <ion-col size="4" size-sm="5" size-md="5" class="column-header">
-        <strong>Country</strong>
+        <strong>País</strong>
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let conversion of filteredConversions" class="data-row">
