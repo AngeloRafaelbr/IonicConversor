@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
+import { SQLiteService } from '../sqlite.service';
 
 @Component({
   selector: 'app-converter',
@@ -11,6 +12,10 @@ import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
 })
 
 export class ConverterPage {
+
+  constructor(private http: HttpClient, private alertController: AlertController, private router: Router,private sqliteService : SQLiteService) {
+    
+  }
 
   //variaveis para o historio
 
@@ -21,7 +26,6 @@ export class ConverterPage {
     result: number, 
     date: string }[] = [];
 
-    private sqlite: SQLiteConnection;
     private db: any; // Variável para armazenar a conexão com o banco de dados
 
   //variáveis para conversão direta:
@@ -50,33 +54,17 @@ export class ConverterPage {
     'ZWL'
   ];;
 
-  constructor(private http: HttpClient, private alertController: AlertController, private router: Router) {
-    this.sqlite = new SQLiteConnection(CapacitorSQLite);
-    this.initializeDatabase();
-  }
 
   //BANCO DE DADOS
+
+  async ngOnInit() {     
+    this.db = this.sqliteService.getDbConnection();      
+    this.initializeDatabase();      
+  }
 
    // Inicializa o banco de dados SQLite e cria a tabela, se necessário
   async initializeDatabase() {
     try {
-      // Cria a conexão com o banco de dados SQLite
-      this.db = await this.sqlite.createConnection('conversionHistory.db', false, 'no-encryption', 1, false);
-
-      // Abrir conexão
-      await this.db.open();
-
-      // Cria a tabela se não existir
-      await this.db.execute(`
-        CREATE TABLE IF NOT EXISTS conversion_history(
-        id INTEGER PRIMARY KEY AUTOINCREMENT, 
-        sourceCurrency TEXT, 
-        targetCurrency TEXT, 
-        amount REAL, 
-        result REAL, 
-        date TEXT
-        )`
-      );
 
       // Carrega o histórico de conversões já salvo
       this.loadHistory();
