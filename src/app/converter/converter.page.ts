@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
+import { Storage } from '@ionic/storage-angular';
 import { SQLiteService } from '../sqlite.service';
 
 @Component({
@@ -13,11 +14,11 @@ import { SQLiteService } from '../sqlite.service';
 
 export class ConverterPage {
 
-  constructor(private http: HttpClient, private alertController: AlertController, private router: Router,private sqliteService : SQLiteService) {
+  constructor(private http: HttpClient, private alertController: AlertController, private router: Router,private sqliteService : SQLiteService, private storage: Storage) {
     
   }
 
-  //variaveis para o historio
+  //variaveis para o historico
 
   conversionHistory: { 
     sourceCurrency: string, 
@@ -192,5 +193,10 @@ export class ConverterPage {
 
   navigateTohistory() {
     this.router.navigate(['/history']); // Redireciona para a página de conversões suportadas
+  }
+
+  async logout() {
+    await this.storage.remove('user');
+    this.router.navigate(['/login']);
   }
 }

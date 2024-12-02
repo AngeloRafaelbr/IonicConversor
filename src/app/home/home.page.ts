@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor( private router: Router) {}
-navigateToConverter() {
-    this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

@@ -1,6 +1,10 @@
 <ion-content>
   <div class="form-container">
-    <h1 class="app-title">Login</h1>
+    <h1 class="app-title">Cadastro</h1>
+    <ion-item class="form-field">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
     <ion-item class="form-field">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
@@ -9,7 +13,7 @@
       <ion-label position="floating">Senha</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
-    <ion-button expand="block" (click)="onLogin()">Entrar</ion-button>
-    <p class="redirect-link" (click)="goToRegister()">Ainda não tem uma conta? Registre-se</p>
+    <ion-button expand="block" (click)="onRegister()">Cadastrar</ion-button>
+    <p class="redirect-link" (click)="goToLogin()">Já possui uma conta? Faça login</p>
   </div>
 </ion-content>

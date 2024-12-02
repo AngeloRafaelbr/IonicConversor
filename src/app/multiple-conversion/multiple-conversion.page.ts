@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Chart, ChartConfiguration, ChartData, ChartOptions, CategoryScale, LinearScale, LineElement, Title, LineController, PointElement, Tooltip, Legend } from 'chart.js'; // Importando as escalas necessárias
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 // Registrando as escalas e outros componentes necessários
 Chart.register(CategoryScale, LinearScale, LineElement, Title, LineController, PointElement, Tooltip, Legend); // Adicionando o LineController
@@ -43,7 +44,7 @@ export class MultipleConversionPage implements AfterViewInit{
    ],
  };
 
-  constructor(private router: Router, private http: HttpClient, private alertController: AlertController) { }
+  constructor(private router: Router, private http: HttpClient, private alertController: AlertController, private storage: Storage) { }
   
   ngAfterViewInit(): void {
     const canvasElement = document.getElementById('conversionChart') as HTMLCanvasElement;
@@ -162,6 +163,11 @@ export class MultipleConversionPage implements AfterViewInit{
 
   navigateToSupport() {
     this.router.navigate(['/supported-currencies']); // Redireciona para a página de conversões suportadas
+  }
+
+  async logout() {
+    await this.storage.remove('user');
+    this.router.navigate(['/login']);
   }
 
 }

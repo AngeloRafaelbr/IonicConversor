@@ -1,0 +1,121 @@
+ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(45deg, #6a1b9a, #0d47a1);
+    padding: 0 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .app-title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #6a1b9a;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-field ion-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+    transition: all 0.3s ease;  // Transição suave para foco e borda
+  }
+  
+  .form-field ion-input:focus-within {
+    border-color: #6a1b9a;
+    background-color: #fff;  // Muda o fundo para branco quando em foco
+  }
+  
+  .form-field ion-input::part(input) {
+    padding-left: 10px;  // Ajuste no padding para garantir que o texto não fique muito perto da borda
+  }
+  
+  .form-field ion-label {
+    font-size: 14px;
+    color: #666;  // Cor suave para o rótulo
+    font-weight: normal;
+  }
+  
+  button {
+    --background: #4caf50;
+    --color: white;
+    --border-radius: 10px;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    letter-spacing: 1px;
+  }
+  
+  button:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    background-color: #2e7d32;
+    transform: scale(0.95);
+  }
+  
+  .redirect-link {
+    font-size: 16px;
+    color: #4caf50;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+  }
+  
+  .redirect-link:hover {
+    color: #388e3c;
+  }
+  
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 1.5rem;
+    }
+  
+    .app-title {
+      font-size: 30px;
+    }
+  
+    button {
+      font-size: 16px;
+    }
+  
+    .redirect-link {
+      font-size: 14px;
+    }
+  }
+  
