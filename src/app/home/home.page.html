@@ -1,20 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="ion-padding">
+  <div class="content-container">
+    <h1 class="app-title">IonicConversor</h1>
+    <p class="intro-text">
+      Em um mundo globalizado, viajar, investir ou negociar em diferentes países pode exigir a conversão de moedas.<br> Agora, você pode fazer de forma rápida e simples, e garantindo que você esteja sempre com as taxas mais precisas.
+    </p>
+    <ion-button class="start-button" expand="full" (click)="navigateToConverter()">
+      Começar agora
+    </ion-button>
   </div>
 </ion-content>

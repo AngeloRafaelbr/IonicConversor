@@ -1,10 +1,11 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Chart, ChartConfiguration, ChartData, ChartOptions, CategoryScale, LinearScale, BarElement, Title, BarController } from 'chart.js'; // Importando as escalas necessárias
+import { Chart, ChartConfiguration, ChartData, ChartOptions, CategoryScale, LinearScale, LineElement, Title, LineController, PointElement, Tooltip, Legend } from 'chart.js'; // Importando as escalas necessárias
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 // Registrando as escalas e outros componentes necessários
-Chart.register(CategoryScale, LinearScale, BarElement, Title, BarController);
+Chart.register(CategoryScale, LinearScale, LineElement, Title, LineController, PointElement, Tooltip, Legend); // Adicionando o LineController
 
 @Component({
   selector: 'app-multiple-conversion',
@@ -15,24 +16,15 @@ export class MultipleConversionPage implements AfterViewInit{
 
   amount: number = 1;
   currencies: string[] = [
-    'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN', 
-    'BAM', 'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 
-    'BSD', 'BTN', 'BWP', 'BYN', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP', 'CNY', 
-    'COP', 'CRC', 'CUP', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD', 'EGP', 
-    'ERN', 'ETB', 'EUR', 'FJD', 'FKP', 'FOK', 'GBP', 'GEL', 'GGP', 'GHS', 
-    'GIP', 'GMD', 'GNF', 'GTQ', 'GYD', 'HKD', 'HNL', 'HRK', 'HTG', 'HUF', 
-    'IDR', 'ILS', 'IMP', 'INR', 'IQD', 'IRR', 'ISK', 'JEP', 'JMD', 'JOD', 
-    'JPY', 'KES', 'KGS', 'KHR', 'KID', 'KMF', 'KRW', 'KWD', 'KYD', 'KZT', 
-    'LAK', 'LBP', 'LKR', 'LRD', 'LSL', 'LYD', 'MAD', 'MDL', 'MGA', 'MKD', 
-    'MMK', 'MNT', 'MOP', 'MRU', 'MUR', 'MVR', 'MWK', 'MXN', 'MYR', 'MZN', 
-    'NAD', 'NGN', 'NIO', 'NOK', 'NPR', 'NZD', 'OMR', 'PAB', 'PEN', 'PGK', 
-    'PHP', 'PKR', 'PLN', 'PYG', 'QAR', 'RON', 'RSD', 'RUB', 'RWF', 'SAR', 
-    'SBD', 'SCR', 'SDG', 'SEK', 'SGD', 'SHP', 'SLE', 'SOS', 'SRD', 'SSP', 
-    'STN', 'SYP', 'SZL', 'THB', 'TJS', 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 
-    'TVD', 'TWD', 'TZS', 'UAH', 'UGX', 'USD', 'UYU', 'UZS', 'VES', 'VND', 
-    'VUV', 'WST', 'XAF', 'XCD', 'XDR', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW', 
-    'ZWL'
+    "USD", // Dólar Americano
+  "EUR", // Euro
+  "GBP", // Libra Esterlina
+  "AUD", // Dólar Australiano
+  "CAD", // Dólar Canadense
+  "CHF", // Franco Suíço
+  "BRL"  // Real Brasileiro
   ];
+  selectedCurrency: string = 'x';
 
  // Variáveis para o gráfico
  chart: any;
@@ -40,30 +32,26 @@ export class MultipleConversionPage implements AfterViewInit{
    labels: [],
    datasets: [
      {
-       label: 'Taxas de Conversão',
+       label: '',
        data: [],
-       backgroundColor: 'rgba(75, 192, 192, 0.2)',
-       borderColor: 'rgba(75, 192, 192, 1)',
-       borderWidth: 1,
+       fill: false,
+       borderColor: 'rgba(255, 255, 0, 1)', // Cor da linha
+        tension: 0.1, // Controla a curvatura da linha (0 para linha reta)
+        borderWidth: 1,
+        pointBackgroundColor: 'rgba(180, 90, 180, 1)', // Cor dos pontos
      },
    ],
  };
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private alertController: AlertController) { }
   
   ngAfterViewInit(): void {
     const canvasElement = document.getElementById('conversionChart') as HTMLCanvasElement;
     if (canvasElement) {
       this.chart = new Chart(canvasElement, {
-        type: 'bar',
+        type: 'line', // Alterado para 'line' (gráfico de linha)
         data: this.chartData,
-        options: {
-          responsive: true,
-          scales: {
-            x: { beginAtZero: true },
-            y: { beginAtZero: true },
-          },
-        } as ChartOptions,
+        
       });
     } else {
       console.error('Elemento canvas não encontrado.');
@@ -71,40 +59,92 @@ export class MultipleConversionPage implements AfterViewInit{
   }
 
  // Função para buscar dados da API e gerar gráfico
- fetchConversionRates() {
-  const apiKey = '6910d38e304136eeddab5b49';  // Substitua pela sua chave da API
-  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+ async fetchConversionRates() {
+  if (this.selectedCurrency !== "x") {
+
+    const apiKey = '6910d38e304136eeddab5b49'; 
+  const selectedCurrency = this.selectedCurrency;
+  const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${selectedCurrency}`;
 
   this.http.get<any>(url).subscribe(response => {
     console.log(response);
     const conversionRates = response.conversion_rates;
     this.updateChartData(conversionRates);
+  }, error => {
+    console.error('Erro ao acessar a API:', error);
   });
+  } else {
+
+    const alert = await this.alertController.create({
+        header: 'Erro',
+        message: 'Insira uma moeda para conversão.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+  }
+  
 }
 
 // Função para atualizar os dados do gráfico
   updateChartData(conversionRates: any) {
     this.chartData.labels = this.currencies;
-    this.chartData.datasets[0].data = this.currencies.map(currency => conversionRates[currency] * this.amount);
+    const currenciesWithSelected = [this.selectedCurrency, ...this.currencies.filter(currency => currency !== this.selectedCurrency)];
+
+    this.chartData.labels = currenciesWithSelected;
+    this.chartData.datasets[0].data = currenciesWithSelected.map(currency => conversionRates[currency] * this.amount);
     if (this.chart) {
       this.chart.destroy(); // Destroi o gráfico antigo
     }
+
     // Verifique se o gráfico já foi inicializado
     if (this.chart) {
       this.chart = new Chart('conversionChart', {
-        type: 'bar',
+        type: 'line', // Alterado para 'line' (gráfico de linha)
         data: this.chartData,
         options: {
           responsive: true,
           scales: {
-            x: { beginAtZero: true },
-            y: { beginAtZero: true },
+            x: {
+              beginAtZero: true, 
+              title: { display: true, text: 'Valor x Moedas' },
+              ticks: {
+                font: {
+                  size: 8
+                }
+              },
+              grid: {
+                color: 'rgba(220, 220, 220, 0.2)', // Cor das linhas verticais da grade
+                lineWidth: 0.5, // Espessura das linhas da grade
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: { display: false, text: 'V A L O R' },
+              ticks: {
+                font: {
+                  size: 9 
+                }
+              },
+              grid: {
+                color: 'rgba(220, 220, 220, 0.4)', // Cor das linhas verticais da grade
+                lineWidth: 0.5, // Espessura das linhas da grade
+              }
+            },
           },
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              enabled: true, // Habilita as dicas de ferramenta (tooltips)
+            }
+          }
         } as ChartOptions,
       });
       } else {
         console.error('O gráfico não foi inicializado corretamente.');
       }
+
   }
 
   // Chama a API e gera o gráfico ao clicar no botão "Converter"
@@ -113,11 +153,11 @@ export class MultipleConversionPage implements AfterViewInit{
   }
 
   navigateToConverter() {
-    this.router.navigate(['/converter']); // Redireciona para a página de conversão direta
+    this.router.navigate(['/converter']);
   }
 
   navigateToChart() {
-    this.router.navigate(['/multiple-conversion']); // Redireciona para a página de conversão múltipla (ainda a ser criada)
+    this.router.navigate(['/multiple-conversion']);
   }
 
   navigateToSupport() {

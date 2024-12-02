@@ -82,7 +82,10 @@
     <div>
       <ion-button class="buttonConverterContainer" (click)="convertCurrency()">Converter</ion-button>
     </div>
-       
+    <div>
+      <ion-button (click)="navigateTohistory()" class="buttonHistoryContainer">
+        <div class="nav-link">Acessar Histórico</div> </ion-button>
+    </div>
 
     </ion-card-content>
 
@@ -96,5 +99,12 @@
       O valor de {{ lastConvertedAmount }} {{ sourceCurrency }} equivale a {{ conversionResult }} {{ targetCurrency }} .
     </ion-card-content>
   </ion-card>
+
+ 
+
+
+  
+
+
 
 </ion-content>

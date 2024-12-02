@@ -23,7 +23,13 @@ const routes: Routes = [
   {
     path: 'supported-currencies',
     loadChildren: () => import('./supported-currencies/supported-currencies.module').then( m => m.SupportedCurrenciesPageModule)
-  },  {
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
+
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },

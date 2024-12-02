@@ -23,6 +23,8 @@
   white-space: nowrap; /* Mantém cada linha na própria linha para não ficar muito largo */
 }
 
+
+
 .select-container {
   display: flex; /* Ativa o layout flexível para os filhos */
   align-items: center; /* Alinha os itens no topo */
@@ -67,9 +69,23 @@
   margin:2rem;
 }
 
+
+.buttonHistoryContainer{
+  display: flex;
+  align-items: center;
+  color:yellow;
+  --background: #2f7cbb;
+}
+
 .buttonConverter{
     padding: 1rem;
     width: 10rem;
+}
+
+.buttonHistoryContainer{
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
 
 /* Responsividade */
